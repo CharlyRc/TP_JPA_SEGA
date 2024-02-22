@@ -41,12 +41,18 @@ public class Main {
         testAnimal.setCouleur("rouge");
         testAnimal.setPetStore(testPetStore);
 
+        Animal testAnimal2 = new Animal();
+        testAnimal2.setBirth(LocalDate.of(1999,02,17));
+        testAnimal2.setCouleur("vert");
+        testAnimal2.setPetStore(testPetStore);
+
         try {
             transaction.begin();
             em.persist(testPetStore);
             em.persist(newAdresse);
             em.persist(testProduct);
             em.persist(testAnimal);
+            em.persist(testAnimal2);
             transaction.commit();
         } catch (Exception e) {
             if (transaction.isActive()) {
