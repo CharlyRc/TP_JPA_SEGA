@@ -1,7 +1,7 @@
 package petstore.entities;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -11,7 +11,7 @@ public class Animal {
     @Column(name="id")
     private int id;
     @Column(name="birth")
-    private Date birth;
+    private LocalDate birth;
     @Column(name="couleur")
     private String couleur;
     @ManyToOne
@@ -21,7 +21,7 @@ public class Animal {
     public Animal() {
     }
 
-    public Animal(Date birth, String couleur, PetStore petStore) {
+    public Animal(LocalDate birth, String couleur, PetStore petStore) {
         this.birth = birth;
         this.couleur = couleur;
         this.petStore = petStore;
@@ -35,11 +35,11 @@ public class Animal {
         this.id = id;
     }
 
-    public Date getBirth() {
+    public LocalDate getBirth() {
         return birth;
     }
 
-    public void setBirth(Date birth) {
+    public void setBirth(LocalDate birth) {
         this.birth = birth;
     }
 

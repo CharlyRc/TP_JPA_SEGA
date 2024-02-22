@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,11 +36,17 @@ public class Main {
         testProduct.setPrice(18.99);
         testProduct.setProdType(ProdType.FOOD);
 
+        Animal testAnimal = new Animal();
+        testAnimal.setBirth(LocalDate.of(2014,04,21));
+        testAnimal.setCouleur("rouge");
+        testAnimal.setPetStore(testPetStore);
+
         try {
             transaction.begin();
             em.persist(testPetStore);
             em.persist(newAdresse);
             em.persist(testProduct);
+            em.persist(testAnimal);
             transaction.commit();
         } catch (Exception e) {
             if (transaction.isActive()) {
